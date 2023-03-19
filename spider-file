@@ -1,0 +1,21 @@
+import scrapy
+import logging
+import attr
+
+class CountriesSpider(scrapy.Spider):  #class that inherits from the scapy model
+    name = 'countries'    # name of spider. Each spider has a unique name
+    allowed_domains = ['www.worldometers.info']  # website without the http
+    start_urls = ['https://www.worldometers.info/world-population/population-by-country/']  # site being scrapped with https
+
+    def parse(self, response):
+        countries=response.xpath("//tr")  # Getting the row from the table
+
+        for country in countries:    
+
+            yield{
+            'country_name':country.xpath('.//td//a//text()').get(),   # getting the name of the country from the anchor tag
+            'population':country.xpath('.//td[3]//text()').get()      # gettting the population for each country
+ 
+            }
+        
+
