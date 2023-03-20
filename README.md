@@ -1,3 +1,2 @@
 # population_scrape
-Scraping the Population Website using scrapy and selenium and sending the results to a csv file. This can then be importing in the a postgres database or imported into
-jupyter notebook to do analysis on the data
+Scraping the Population Website using scrapy a csv file. Then the data will be sent to the MongoDb using the pymongo connector.
